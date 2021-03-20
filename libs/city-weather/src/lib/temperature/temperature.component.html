@@ -1,0 +1,10 @@
+<div>Type in city name to see the temperature</div>
+<form [formGroup]="form">
+
+  <label>
+    City:
+    <input type="text" formControlName="city">
+  </label>
+
+  <button type="submit" (click)="doSearch()">Search</button>
+</form>
