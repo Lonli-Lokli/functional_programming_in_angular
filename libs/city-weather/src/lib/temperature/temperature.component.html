@@ -1,10 +1,20 @@
 <div>Type in city name to see the temperature</div>
-<form [formGroup]="form">
-
+<form [formGroup]="form" *ngIf="state$ | async as state">
   <label>
     City:
-    <input type="text" formControlName="city">
+    <input
+      class="form-control"
+      type="text"
+      id="weatherLocation"
+      aria-describedby="weatherLocation"
+      placeholder="Please input a Location"
+      formControlName="city"
+    />
   </label>
 
   <button type="submit" (click)="doSearch()">Search</button>
+
+  <div>
+    {{state.weather | json}}
+  </div>
 </form>

@@ -15,5 +15,10 @@
       "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
-  "projects": { "weather": { "tags": [] }, "city-weather": { "tags": [] } }
+  "projects": {
+    "weather": { "tags": [] },
+    "city-weather": { "tags": [] },
+    "utils": { "tags": [] },
+    "api-weather": { "tags": [] }
+  }
 }

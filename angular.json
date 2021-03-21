@@ -25,7 +25,8 @@
     "@nrwl/angular:library": {
       "style": "scss",
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     },
     "@nrwl/angular:component": {
       "style": "scss"
@@ -47,10 +48,7 @@
             "polyfills": "apps/weather/src/polyfills.ts",
             "tsConfig": "apps/weather/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/weather/src/favicon.ico",
-              "apps/weather/src/assets"
-            ],
+            "assets": ["apps/weather/src/favicon.ico", "apps/weather/src/assets"],
             "styles": ["apps/weather/src/styles.scss"],
             "scripts": []
           },
@@ -104,10 +102,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/weather/src/**/*.ts",
-              "apps/weather/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/weather/src/**/*.ts", "apps/weather/src/**/*.html"]
           }
         },
         "test": {
@@ -129,10 +124,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/city-weather/src/**/*.ts",
-              "libs/city-weather/src/**/*.html"
-            ]
+            "lintFilePatterns": ["libs/city-weather/src/**/*.ts", "libs/city-weather/src/**/*.html"]
           }
         },
         "test": {
@@ -140,6 +132,50 @@
           "outputs": ["coverage/libs/city-weather"],
           "options": {
             "jestConfig": "libs/city-weather/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "utils": {
+      "projectType": "library",
+      "root": "libs/utils",
+      "sourceRoot": "libs/utils/src",
+      "prefix": "fp",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/utils/src/**/*.ts", "libs/utils/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/utils"],
+          "options": {
+            "jestConfig": "libs/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-weather": {
+      "projectType": "library",
+      "root": "libs/api-weather",
+      "sourceRoot": "libs/api-weather/src",
+      "prefix": "fp",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api-weather/src/**/*.ts", "libs/api-weather/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api-weather"],
+          "options": {
+            "jestConfig": "libs/api-weather/jest.config.js",
             "passWithNoTests": true
           }
         }
