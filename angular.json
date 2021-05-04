@@ -180,6 +180,28 @@
           }
         }
       }
+    },
+    "typings": {
+      "projectType": "library",
+      "root": "libs/typings",
+      "sourceRoot": "libs/typings/src",
+      "prefix": "fp",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/typings/src/**/*.ts", "libs/typings/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/typings"],
+          "options": {
+            "jestConfig": "libs/typings/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

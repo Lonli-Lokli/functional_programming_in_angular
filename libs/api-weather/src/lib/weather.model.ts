@@ -1,43 +1,49 @@
-export interface Request {
-    type: string;
-    query: string;
-    language: string;
-    unit: string;
+export interface Weather {
+  icon: string;
+  code: number;
+  description: string;
 }
 
-export interface Location {
-    name: string;
-    country: string;
-    region: string;
-    lat: string;
-    lon: string;
-    timezone_id: string;
-    localtime: string;
-    localtime_epoch: number;
-    utc_offset: string;
+export interface Datum {
+  rh: number;
+  pod: string;
+  lon: number;
+  pres: number;
+  timezone: string;
+  ob_time: string;
+  country_code: string;
+  clouds: number;
+  ts: number;
+  solar_rad: number;
+  state_code: string;
+  city_name: string;
+  wind_spd: number;
+  wind_cdir_full: string;
+  wind_cdir: string;
+  slp: number;
+  vis: number;
+  h_angle: number;
+  sunset: string;
+  dni: number;
+  dewpt: number;
+  snow: number;
+  uv: number;
+  precip: number;
+  wind_dir: number;
+  sunrise: string;
+  ghi: number;
+  dhi: number;
+  aqi: number;
+  lat: number;
+  weather: Weather;
+  datetime: string;
+  temp: number;
+  station: string;
+  elev_angle: number;
+  app_temp: number;
 }
 
-export interface Current {
-    observation_time: string;
-    temperature: number;
-    weather_code: number;
-    weather_icons: string[];
-    weather_descriptions: string[];
-    wind_speed: number;
-    wind_degree: number;
-    wind_dir: string;
-    pressure: number;
-    precip: number;
-    humidity: number;
-    cloudcover: number;
-    feelslike: number;
-    uv_index: number;
-    visibility: number;
-    is_day: string;
-}
-
-export interface ApiCityResponse {
-    request: Request;
-    location: Location;
-    current: Current;
+export interface CityResponse {
+  data: Datum[];
+  count: number;
 }

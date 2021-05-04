@@ -19,6 +19,7 @@
     "weather": { "tags": [] },
     "city-weather": { "tags": [] },
     "utils": { "tags": [] },
-    "api-weather": { "tags": [] }
+    "api-weather": { "tags": [] },
+    "typings": { "tags": [] }
   }
 }

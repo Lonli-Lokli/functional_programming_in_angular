@@ -17,8 +17,15 @@
     "paths": {
       "@fp/city-weather": ["libs/city-weather/src/index.ts"],
       "@fp/utils": ["libs/utils/src/index.ts"],
-      "@fp/api-weather": ["libs/api-weather/src/index.ts"]
+      "@fp/api-weather": ["libs/api-weather/src/index.ts"],
+      "@fp/typings": ["libs/typings/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"],
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableResourceInlining": true
+  }
 }

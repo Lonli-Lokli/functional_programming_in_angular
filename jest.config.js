@@ -3,6 +3,7 @@ module.exports = {
     '<rootDir>/apps/weather',
     '<rootDir>/libs/city-weather',
     '<rootDir>/libs/utils',
-    '<rootDir>/libs/api-weather'
+    '<rootDir>/libs/api-weather',
+    '<rootDir>/libs/typings'
   ]
 };
