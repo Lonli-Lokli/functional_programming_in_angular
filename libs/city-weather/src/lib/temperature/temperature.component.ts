@@ -23,6 +23,7 @@ export class TemperatureComponent {
   public weatherForm: FormGroup;
   public stations: CityStationWeather[] = [];
   public station: CityStationWeather | undefined;
+  public error: string | undefined;
 
   constructor(private svc: WeatherService, private formBuilder: FormBuilder) {
     this.weatherForm = this.formBuilder.group(
@@ -62,7 +63,10 @@ export class TemperatureComponent {
     this.svc
       .getWeather(identity<SearchForm>(this.searchForm.value).city)
       .pipe(take(1))
-      .subscribe(stations => (this.stations = stations));
+      .subscribe(stations => stations.mapRight(s => {
+        this.stations = s;
+        this.error = undefined;
+      }).mapLeft(e => (this.error = e.message)));
   }
 
   public changeStation() {

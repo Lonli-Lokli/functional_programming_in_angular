@@ -1,4 +1,4 @@
-<h2>Type in city name to see the temperature</h2>
+<h2>Type in city name to see the temperature (London should fail)</h2>
 <form [formGroup]="searchForm">
   <label>
     City:
@@ -12,15 +12,21 @@
       formControlName="city"
     />
  
+
   <button type="submit" (click)="doSearch()">Search</button>
-  <ng-container *ngIf="stations.length">
-    <p>
-      <label>Stations: </label>
-      <select [(ngModel)]="station" [ngModelOptions]="{standalone: true}" (ngModelChange)="changeStation()">
-        <option *ngFor="let station of stations" [ngValue]="station" >{{ station.station }}</option>
-      </select>
-    </p>
-  </ng-container>
+  <div *ngIf="error; else noError">Error during request: {{error}}</div>
+
+  <ng-template #noError>
+    <ng-container *ngIf="stations.length">
+      <p>
+        <label>Stations: </label>
+        <select [(ngModel)]="station" [ngModelOptions]="{standalone: true}" (ngModelChange)="changeStation()">
+          <option *ngFor="let station of stations" [ngValue]="station" >{{ station.station }}</option>
+        </select>
+      </p>
+    </ng-container>
+  </ng-template>
+
 </form>
 
 <div *ngIf="station">
