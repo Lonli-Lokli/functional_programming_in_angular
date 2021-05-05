@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PrefixPipe } from './temperature/pipes';
+import { PrefixPipe } from './pipes/pipes';
+import { IfLeftDirective, IfRightDirective } from './directives/if-either.directive';
+
 
 @NgModule({
   imports: [
@@ -12,6 +14,6 @@ import { PrefixPipe } from './temperature/pipes';
     ReactiveFormsModule,
     RouterModule.forChild([{ path: '', pathMatch: 'full', component: TemperatureComponent }])
   ],
-  declarations: [TemperatureComponent, PrefixPipe]
+  declarations: [TemperatureComponent, PrefixPipe, IfLeftDirective, IfRightDirective]
 })
 export class CityWeatherModule {}

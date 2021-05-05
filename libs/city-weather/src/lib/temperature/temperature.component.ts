@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { identity } from '@fp/utils';
-import { WeatherService } from '@fp/api-weather';
+import { ServerError, WeatherService } from '@fp/api-weather';
 import { CityStationWeather } from '@fp/typings';
 import { take } from 'rxjs/operators';
+import { Either, right } from '@sweet-monads/either';
 
 interface SearchForm {
   city?: string;
@@ -21,9 +22,8 @@ export class TemperatureComponent {
     city: new FormControl('')
   }));
   public weatherForm: FormGroup;
-  public stations: CityStationWeather[] = [];
+  public stations: Either<ServerError, CityStationWeather[]> = right<ServerError, CityStationWeather[]>([]);
   public station: CityStationWeather | undefined;
-  public error: string | undefined;
 
   constructor(private svc: WeatherService, private formBuilder: FormBuilder) {
     this.weatherForm = this.formBuilder.group(
@@ -63,10 +63,7 @@ export class TemperatureComponent {
     this.svc
       .getWeather(identity<SearchForm>(this.searchForm.value).city)
       .pipe(take(1))
-      .subscribe(stations => stations.mapRight(s => {
-        this.stations = s;
-        this.error = undefined;
-      }).mapLeft(e => (this.error = e.message)));
+      .subscribe(stations => (this.stations = stations));
   }
 
   public changeStation() {
